@@ -31,12 +31,20 @@ function saveTodo(){
         alert('Todo already exists!');
     }
     else{
+        if(editTodo >=0) {
+           todos = todos.map((todo, index) => ({
+                    ...todo,
+                    value : index === editTodo ? todoValue :todo.value,
+          }));
+          editTodo = -1;
+        }else{
         todos.push({
             value: todoValue,
             checked: false,
             color: '#' + Math.floor(Math.random()*16777215).toString(16)
     
     });
+}
         todoInput.value = '';
     }
 }
@@ -78,7 +86,7 @@ todosListEl.addEventListener('click', (event) => {
     const action= target.dataset.action;
 
     action === "check" && checkTodo(todoId);
-    // action === "edit" && editTodo(todoId);
+    action === "edit" && editTodo(todoId);
     // action === "delete" && deleteTodo(todoId);
 });
 
@@ -90,4 +98,9 @@ function checkTodo(todoId){
         }));
 
     renderTodos();
+}
+
+// edit a todo
+function editTodo(todoId){
+    todoInput.value = todos[todoId].value;
 }
