@@ -51,10 +51,11 @@ function renderTodos(){
             <i
                 class="bi ${todo.checked ? 'bi-check-circle-fill' :'bi-circle'}"
                 style="color : $(todo.color)"
+                data-action="check"
             ></i>
-            <p class="">${todo.value} </p>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i></>
+            <p class="" data-action="check">${todo.value}</p>
+            <i class="bi bi-pencil-square" data-action="edit"></i>
+            <i class="bi bi-trash" data-action="delete"></i>
             </div> 
         `;
     });
@@ -68,8 +69,25 @@ todosListEl.addEventListener('click', (event) => {
 
     if(parentElement.className !== 'todo') return;
 
+    // to do id
+
     const todo= parentElement;
     const todoId = Number(todo.id);
+    
+    // target action
+    const action= target.dataset.action;
 
-    console.log(todoId);
+    action === "check" && checkTodo(todoId);
+    // action === "edit" && editTodo(todoId);
+    // action === "delete" && deleteTodo(todoId);
 });
+
+// check a todo
+function checkTodo(todoId){
+    todos = todos.map((todo, index) => ({
+            ...todo,
+            checked: index === todoId ? !todo.checked :todo.checked,
+        }));
+
+    renderTodos();
+}
