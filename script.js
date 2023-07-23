@@ -5,7 +5,7 @@ const todosListEl = document.getElementById("todos-list")
 
 // VARS
 let todos = []; 
-
+let EditTodoId = -1;
 // FROM SUBMIT
 form.addEventListener('submit' , function (event){
     event.preventDefault();
@@ -31,12 +31,12 @@ function saveTodo(){
         alert('Todo already exists!');
     }
     else{
-        if(editTodo >=0) {
+        if(EditTodoId >=0) {
            todos = todos.map((todo, index) => ({
                     ...todo,
-                    value : index === editTodo ? todoValue :todo.value,
+                    value : index === editTodoId ? todoValue :todo.value,
           }));
-          editTodo = -1;
+          EditTodoId = -1;
         }else{
         todos.push({
             value: todoValue,
@@ -87,7 +87,7 @@ todosListEl.addEventListener('click', (event) => {
 
     action === "check" && checkTodo(todoId);
     action === "edit" && editTodo(todoId);
-    // action === "delete" && deleteTodo(todoId);
+    action === "delete" && deleteTodo(todoId);
 });
 
 // check a todo
@@ -103,4 +103,13 @@ function checkTodo(todoId){
 // edit a todo
 function editTodo(todoId){
     todoInput.value = todos[todoId].value;
+    EditTodoId = todoId;
+}
+
+//delete todo
+function deleteTodo(todoId){
+   todos = todos.filter((todo, index) => index !== todoId);
+    EditTodoId = -1;
+    //re-render
+    renderTodos();
 }
