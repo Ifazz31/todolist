@@ -1,0 +1,90 @@
+/* Reset some default styles */
+* {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  background-color: #dbdada;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  }
+  
+  .box {
+    margin: 20px auto;
+    min-height: 50vh;
+    min-width: 30vw;
+    background-color: rgb(105, 174, 253);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .header {
+    font-size: 2rem;
+    text-align: center;
+    padding: 20px 0;
+    margin: 20px;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+  }
+  
+  .input-group label {
+    flex: 0 10 100px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  
+  .input-group input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color:#7c39e9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .submit-button:hover {
+    background-color: #b30000;
+  }
+  
+  .create-account {
+    text-align: right;
+    margin: 20px;
+  }
+  
+  .create-account a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .create-account a:hover {
+    text-decoration: underline;
+  }
+  
